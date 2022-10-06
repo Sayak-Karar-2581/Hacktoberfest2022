@@ -5,16 +5,35 @@
 // You can return the answer in any order.
 
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        int arr[] = new int[2];
-        int n1,n2;
-        for(int i=0;i<nums.length;i++) {
-            n1=nums[i];
-            for(int j=i+1;j<nums.length;j++) {
-                n2=nums[j];
-                if(n1+n2 == target) {
-                    arr[0]=i;
-                    arr[1]=j;
+	public static void main(String[] args) {
+		Solution solution = new Solution();
+		
+		int nums[] = new int[]{ 1, -2, -4, 5};
+		int target = -6;
+		
+		int twoSumNumberIndices[] = solution.twoSum(nums, target);
+		
+		if(twoSumNumberIndices == null) {
+			System.out.println("No numbers found that sum upto " + target);
+		}else {
+			System.out.printf("Number %d (at index %d) and %d (at index %d) sum upto %d\n", 
+					nums[twoSumNumberIndices[0]], twoSumNumberIndices[0], nums[twoSumNumberIndices[1]], twoSumNumberIndices[1], target);
+		}
+	}
+	
+	public int[] twoSum(int[] nums, int target) {
+        int arr[] = null;
+        
+        int number1, number2, lengthOfArray = nums.length;
+        
+        for(int i = 0; i < lengthOfArray; i++) {
+            number1 = nums[i];
+            
+            for(int j = i + 1; j < lengthOfArray; j++) {
+                number2 = nums[j];
+                if(number1 + number2 == target) {
+                    arr = new int[] {i, j};
+                    break; 
                 }
             }
         }
